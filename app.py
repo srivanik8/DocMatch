@@ -2,13 +2,13 @@ from flask import Flask, render_template, request,jsonify
 import json
 import joblib
 from joblib import dump , load
-from flask import Flask, request
 import pandas as pd
 from sklearn.neighbors import NearestNeighbors
 import json
 import math
 import Levenshtein #for getting nearest disease name from the disease names whihc are in dataset
 import requests #for medication for symptoms
+import serpapi
 
 
 app = Flask(__name__)
@@ -443,10 +443,22 @@ def get_live_location():
 
 
 ######################################################
-import serpapi
+
 import langchain_google_genai
 from langchain_google_genai import ChatGoogleGenerativeAI
 import os
+from serpapi import GoogleSearch
+params = {
+  "q": "Coffee",
+  "location": "Austin, Texas, United States",
+  "hl": "en",
+  "gl": "us",
+  "google_domain": "google.com",
+  "api_key": "secret_api_key"
+}
+
+search = GoogleSearch(params)
+
 os.environ["GOOGLE_API_KEY"] = "AIzaSyABnz5j-yoPNCejwV5BnNZn2xruPu6cMmY"
 
 def get_response(query, location):
@@ -458,29 +470,30 @@ def get_response(query, location):
         "google_domain": "google.com",
         "api_key": "9a4a56b00179906512733cd9492838cf4f65d04459c2739121a9a716d1b85a3b"
     }
-    results = serpapi.search(params)
+    search = GoogleSearch(params)
+    results = search.get_dict()
     return results
 
 
-def get_answer(response):
+def get_answer(answer):
     llm = ChatGoogleGenerativeAI(model="gemini-pro")
     rating = "not available"
     reviews = "not available"
     type = "not available"
-    if response["address"]:
-        address = response["address"]
+    if answer["address"]:
+        address = answer["address"]
     else:
         address = "not available"
-    if response["phone"]:
-        phone = response["phone"]
+    if answer["phone"]:
+        phone = answer["phone"]
     else:
         phone = "not available"
-    if response["hours"]:
-        hours = response["hours"]
+    if answer["hours"]:
+        hours = answer["hours"]
     else:
         hours = "not available"
-    if response["title"]:
-        title = response["title"]
+    if answer["title"]:
+        title = answer["title"]
     else:
         title = "not available"
     prompt = f"you are a medical assistant; for the given symptoms the desired suggestion is with rating {rating} with number of reviews {reviews} of type {type} at {address} of title{title} with phone number {phone} and timins{hours}.Present in a presenatble format as if you are replying the user in a conversation, answer in paragraphs. Do not mention users part "
@@ -492,15 +505,15 @@ def get_answer(response):
 def specialization():
     return render_template('index1.html')
 
-@app.route('/response', methods=['GET','POST'])
-def response():
+@app.route('/answer', methods=['GET','POST'])
+def answer():
     if request.method == 'POST':
     # Access form data from POST request
         query = request.form['query']
         location = request.form['location']
-        response = get_response(query, location)
-        reply = get_answer(response["local_results"]["places"][0])
-        return render_template('index1.html', response = response, reply = reply)
+        answer = get_response(query, location)
+        reply = get_answer(answer["local_results"]["places"][0])
+        return render_template('index1.html', response = answer, reply = reply)
     return render_template('index1.html')
 ###########################################
 
