@@ -8,7 +8,7 @@ Problem Statement : The objective is to develop an medical AI assistant that add
 1. Capture key user details like age, gender, and alcohol use. For pregnant users, note pregnancy status and trimester. Also, collect concise information on experienced symptoms for a comprehensive understanding.
 2. Examine symptoms and offer the option to inquire about disease description and precautions for a more thorough understanding
 3. Leveraging a predefined medication database, we offer personalized recommendations based on predicted diseases derived from user details. Additionally, we reveal anticipated health issues and suggest suitable medications.
-4 . Post medication recommendations, we facilitate users by directing them to nearby hospitals featuring specialists aligned with their specific medical condition.
+4. Post medication recommendations, we facilitate users by directing them to nearby hospitals featuring specialists aligned with their specific medical condition.
 ## Setup of local environment
 1. Fork this repo.
 2. Run the command `git clone https://github.com/srivanik8/DocMatch.git`
