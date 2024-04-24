@@ -1,19 +1,14 @@
 # DocMatch
 ## Problem Statement
-In the face of growing environmental challenges, there is a pressing need to leverage AI technologies to monitor, analyze, and mitigate environmental issues. By harnessing the power of AI, we can gain valuable insights into environmental data, predict and prevent natural disasters, and promote sustainable practices. This will enable us to make informed decisions and take proactive measures to protect our planet for future generations. Problem Statement: The objective is to develop an AI-powered system that addresses the critical aspects of environmental conservation. The system should have the capability to monitor and analyze environmental data, predict and prevent natural disasters, and promote sustainable practices. 
-* Natural Disaster Prediction: Develop AI algorithms and models that utilize environmental data to predict and identify potential natural disasters, such as hurricanes, floods, wildfires, and earthquakes. The system should be able to provide early warnings and assist in disaster preparedness and response efforts.
+Post Covid, humans have grown fragile. They have lost their ability to face physical stress and Covid has scarred us enough to leave us weak leading to high rates of deaths. It has also instilled fear and indicated the significance of awareness regarding the body, showing us that no symptoms shall be left unattended and treated with our own knowledge. The possibility of disease that is the presence of symptoms  without proper awareness leads to mental agony. The absence of good contacts with doctors and medical personnel might create a confusion about whom to approach and what sort of doctor to visit and to look for. 
+Problem Statement : The objective is to develop an medical AI assistant that addresses medical issues faced by users. The system should have the capability to monitor and analyze user data, predict diseases, and recommend doctors aligned with user's medical conditions.
+* Medical Assistant: Develop a healthcare recommendation system that analyzes user symptoms leveraging symptom data (using mock data), healthcare provider databases, and user ratings,  recommends doctors with matching specialties and aligned schedules
+
 ## Solution
-Development of an AI model which takes environmental variables of the past few days and based on that data gives the prediction of one or more dominant factors which can be the primary cause of the natural disaster and then compares those factors against a threshold to determine which areas can be most affected by the disaster. Since the model takes into account data of multiple days in advance, it can be used to predict a disaster well before it happens and aid in the evacuation efforts. Along with the environmental factors of a particular place (example elevation for flood, seismic zone for earthquake), socio economic factors such as area’s population density, and area distribution based on other factors(for example distribution based on wealth, divide of rural vs urban) can be used to determine which areas will be most critically hit and will affect how much population. This can help in evacuation efforts. Additionally predictive data of months of a year can be used to judge the seasonality of the disaster, i.e, prediction of whether the disaster is likely to happen that particular year or not based on the established seasonality of disaster in the preceding years.
-### Floods prediction AI model
-Flood prediction model can be explained by taking the example of a city in Kerala -> Kozhikode
-A heavy rainfall can be defined as rainfall greater than 100 mm in 24 hours. If a lot of rainfall is received in an area with low elevation such as Kozhikode (1 m - 50 m approx) that can potentially lead to flooding if the drainage system is not adequate. Rainfall depends on other environmental factors such as humidity, max. temperature, dew, cloud cover, visibility, sea level pressure, wind direction, wind speed to name a few. By taking into account the data of previous (7 days) (3 days in implementation) a prediction for the rainfall that can occur after 7 days can be made. This can give an idea about whether flooding is possible in the region or not (if it is greater than a threshold then flooding is possible). After the rainfall prediction, by using the data from the elevation of different areas of the district, it is possible to evaluate which areas are at risk of flooding. Furthermore using the socio economic distribution data (population density, rural vs urban areas, slums etc.) the impact can be measured on that area & hence proper arrangements can be made.
-### Sentiment Analysis using insta posts
-By web scraping the insta posts or any other social media the severity of flood can be determined. If there are a lot of posts with negative sentiments such as death, destruction, loss of life etc the negative sentiment will be high. First the scraping of posts is done, then searching for information about the area from where it was made & then grouping according to it. Then sentiment analysis on these groups can tell us about the severity of floods. The steps taken for training this model are:
-1. Punctuation removal
-2. Stopword Removal
-3. Lemmatization
-4. Analyzation through word cloud
-5. Using pipelines to pass through NLP transformers for sentiment analysis.
+1. Capture key user details like age, gender, and alcohol use. For pregnant users, note pregnancy status and trimester. Also, collect concise information on experienced symptoms for a comprehensive understanding.
+2. Examine symptoms and offer the option to inquire about disease description and precautions for a more thorough understanding
+3. Leveraging a predefined medication database, we offer personalized recommendations based on predicted diseases derived from user details. Additionally, we reveal anticipated health issues and suggest suitable medications.
+4 . Post medication recommendations, we facilitate users by directing them to nearby hospitals featuring specialists aligned with their specific medical condition.
 ## Setup of local environment
 1. Fork this repo.
 2. Run the command `git clone https://github.com/srivanik8/DocMatch.git`
@@ -28,4 +23,5 @@ By web scraping the insta posts or any other social media the severity of flood 
 4. Use the hospital locator feature to find nearby healthcare facilities.
 5. Use the specialization feature to recieve the specialist's info based on ratings and reviews along with their adddress and phone numbers.
 ## Demo
-https://drive.google.com/file/d/1NaFPajzAUuInDLo04azrwljS5jFZUZhQ/view?usp=sharing
+https://drive.google.com/file/d/1Q-UG8PwF6XaItq1-AG4E_CmgJfSo7B0-/view?usp=sharing 
+
